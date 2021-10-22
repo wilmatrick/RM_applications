@@ -1,0 +1,88 @@
+# =========================================
+# ===== MODEL PARAMETERS FOR ANALYSIS =====
+# =========================================
+# 
+# data set name: mock_data_exampleB_py3
+# test name    : test0
+# 
+# ***** GENERAL SETUP *****
+# * DATA & MODEL:
+# 		 data type / potential type / selection function type / df type / prior type / file version)
+			1	71	1	0	0	2
+# data               type: 1 = perfect mock data
+# potential          type: 71 = Miyamoto-Nagai disk, NFW halo & Hernquist bulge (galpy MWPotential like) + StaeckelGrid actions
+# selection function type: 1 = wedge (box completeness)
+# distribution funct type: 0 = quasiisothermal df (Binney & McMillan 2011)
+# prior              type: 0 = flat priors on potential and log(DF) parameters.
+# 
+# * NUMERICAL PRECISION IN ANALYSIS:
+# 		 Normalisation: N_spatial / N_velocity / N_sigma / vT_galpy_max / --- / ---
+			20	28	5.5e+00	1.5	0	0
+# 		 MCMC: Does MCMC use fiducial DF? / # MC steps: total / # MC steps: burn-in / --- / --- / ---
+			1	200	100	0	0	0
+# 		 ActionAngleStaeckel: Use fixed default Delta? / Estimate Delta for each potential? / new fixed Delta [galpy] / --- / --- / ---
+			1	0	0.0	0	0	0
+# 		 ActionAngleStaeckelGrid: Use StaeckelGrid? / Rmax [galpy] / nE / npsi / nLz / ---
+			1	5.0	70.0	40.0	50.0	0
+#
+# ***** MOCK DATA: PERFECT *****
+# * # stars / --- / --- / --- / --- / ---
+			500	0	0	0	0	0
+#
+# ***** POTENTIAL: MIYAMOTO-NAGAI DISK + NFW HALO + HERNQUIST BULGE (galpy MWPotential-like)*****
+# 		 true value / estimate / --- / fit min / fit max / # grid points
+# R_0      [kpc]  =
+			8.0	8.0	0	8.0	8.0	1
+# v_c(R_0) [km/s] =
+			240.0	216.0	0	236.18544025939096	243.673780049925	12
+# a_disk   [kpc]  =
+			2.5	2.25	0	2.0865371348303805	3.0508539447543948	12
+# b_disk   [kpc]  =
+			0.3	0.27	0	0.09117586345595136	0.41512113354365493	12
+# f_halo          =
+			0.3	0.3	0	0.3	0.3	1
+# a_halo   [kpc]  =
+			18.0	18.0	0	18.0	18.0	1
+#
+# ***** QUASI-ISOTHERMAL DISTRIBUTION FUNCTION *****
+# * physical coordinates:
+# 		 true value / estimate / fiducial / fit min / fit max / # grid points
+# 		                        (not used)(not used)(not used)   (not used)
+#   h_R       [kpc]  =
+			2.5e+00	2.75	2.7221403093708973	2.072398318881119	3.575590559204152	12
+#   sigma_R   [km/s] =
+			33.0	36.300000000000004	34.297692495021856	32.03857579087105	36.716104928055465	12
+#   sigma_z   [km/s] =
+			25.0	27.500000000000004	27.447853529630894	22.841332118508493	32.983394290458136	12
+#   h_sigma_R [kpc]  =
+			8.0	8.0	8.0	8.0	8.0	1
+#   h_sigma_z [kpc]  =
+			7.0	7.0	7.0	7.0	7.0	1
+# * galpy coordinates:
+# 		 true value / estimate / fiducial / fit min / fit max / # grid points
+# 		 (not used)  (not used)   
+#   ln( h_R     [_REFR0])   =
+			-1.1631508098056809	-1.067840630001356	-1.0780230923532808	-1.3507349969158788	-0.8053111877906828	12
+#   ln( sigma_R [_REFV0])   =
+			-1.8971199848858813	-1.8018098050815563	-1.858549468641091	-1.9266868761117422	-1.79041206117044	12
+#   ln( sigma_z [_REFV0])   =
+			-2.174751721484161	-2.0794415416798353	-2.0813395770961223	-2.265055839337634	-1.8976233148546107	12
+#   ln( h_sigma_R [_REFR0]) =
+			0.0	0.0	0.0	0.0	0.0	1
+#   ln( h_sigma_z [_REFR0]) =
+			-0.13353139262452263	-0.13353139262452263	-0.13353139262452263	-0.13353139262452263	-0.13353139262452263	1
+#
+# ***** OBSERVED VOLUME: WEDGE / COMPLETENESS: BOX *****
+# 		 true value / estimate / --- / --- / --- / ---
+# R_min [kpc] =
+			5.0	5.0	0	0	0	0
+# R_max [kpc] =
+			10.0	10.0	0	0	0	0
+# z_min [kpc] =
+			-1.0	-1.0	0	0	0	0
+# z_max [kpc] =
+			1.0	1.0	0	0	0	0
+# phi_min [deg] =
+			-180.0	-180.0	0	0	0	0
+# phi_max [deg] =
+			180.0	180.0	0	0	0	0

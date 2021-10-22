@@ -1,0 +1,501 @@
+----------------------------------------------------------------------------
+                                                   Thu Oct 21 23:46:59 2021
+
+ Hello Wilma Trick,
+
+                                                       
+ Welcome to the FREYA cluster. 
+
+ 
+============================================================================
+
+Data in /u ($HOME) is quoted to 900GB per user. 
+
+- IMPORTANT: /freya/ptmp and /virgo are NOT backed up on this system.
+        You have to archive your data in those directories by yourself.
+
+============================================================================
+----------------------------------------------------------------------------
+RUNNING NOW: perform_RoadMapping_analysis_on_mockdata_EXAMPLE_py3.py
+CODE VERSION: 2021-October-20
+/u/twilm/conda-envs/py3_env/lib/python3.9/site-packages/galpy/util/bovy_coords.py:6: FutureWarning: galpy.util.bovy_coords is being deprecated in favor of galpy.util.coords; all functions in there are the same; please switch to the new import, because the old import will be removed in v1.9
+  warnings.warn('galpy.util.bovy_coords is being deprecated in favor of galpy.util.coords; all functions in there are the same; please switch to the new import, because the old import will be removed in v1.9',FutureWarning)
+
+/u/twilm/conda-envs/py3_env/lib/python3.9/site-packages/galpy/util/bovy_conversion.py:6: FutureWarning: galpy.util.bovy_conversion is being deprecated in favor of galpy.util.conversion; all functions in there are the same; please switch to the new import, because the old import will be removed in v1.9
+  warnings.warn('galpy.util.bovy_conversion is being deprecated in favor of galpy.util.conversion; all functions in there are the same; please switch to the new import, because the old import will be removed in v1.9',FutureWarning)
+
+* Input parameter file does not exist yet - create it now. *
+* Start RoadMapping analysis *
+DEBUGGING OUTPUT in analyze_mockdata_RoadMapping(): Switched off warning about only using galpy's version 1.2 in October 2021. Make sure this does not lead to unexpected problems when using different galpy versions. Especially for Python 3.
+______________________________________________________________________
+_____Analyse mock data set:  mock_data_exampleB_py3
+_____test:  test0
+_____with:  GRID
+______________________________________________________________________
+DATA TYPE: * mock data
+           * no measurement errors
+           *  500  stars
+POTENTIAL: * potential with Miyamoto-Nagai disk, NFW halo + Hernquist bulge 
+             (galpy MWPotential like)
+           * action calculation: actionAngleStaeckelGrid
+           * true parameters:
+                R_sun [kpc], v_circ(R_sun) [km/s], a_d [kpc], b_d [kpc], f_h, a_h [kpc]
+                [  8.  240.    2.5   0.3   0.3  18. ]
+           * parameters kept fixed?
+                [ True False False False  True  True]
+             at value
+                [  8.   216.     2.25   0.27   0.3   18.  ]
+QUASI-ISOTHERMAL DISTRIBUTION FUNCTION:
+           * true parameters:
+                hr [kpc], sr [km/s], sz [km/s], hsr [kpc], hsz [kpc]
+                [ 2.5 33.  25.   8.   7. ]
+           * parameters kept fixed?
+                [False False False  True  True]
+             at value
+                [ 2.75 36.3  27.5   8.    7.  ]
+           * fiducial qdf parameters:
+                [ 2.69443872 35.56659107 26.94438717  8.          7.        ]
+SELECTION FUNCTION:
+           * wedge
+           * true parameters:
+                R_min [kpc], R_max [kpc], z_min [kpc], z_max [kpc], phi_min [deg], phi_max [deg]
+                [   5.   10.   -1.    1. -180.  180.]
+PRIORS:
+           * Flat priors on potential parameters (inside physical regime).
+           * Logarithmically flat priors on DF parameters.
+NUMERICAL PRECISION:
+           * N_spatial =  20 , N_velocity =  28
+           * N_sigma   =  5.5 , vT_max [galpy] =  1.5
+           * # of MCMC steps:  200 , # of burn-in steps:  100
+           * Analysis uses FIDUCIAL qDF for fitting range also in the MCMC.
+           * Analysis uses the Staeckel fudge with DEFAULT focal length DELTA=0.45*ro for each potential.
+           * Analysis uses the actionAngleStaeckelGrid with:
+             Rmax =  5.0 , nE =  70 ,
+             npsi =  40 , nLz =  50
+Parameter intervals to investigate 
+v_c [km/s] 	:	 3 	in	 [ 172.8 , 259.2 ]
+a_d [kpc] 	:	 3 	in	 [ 1.8 , 2.6999999999999997 ]
+b_d [kpc] 	:	 3 	in	 [ 0.21600000000000003 , 0.324 ]
+ln(h_R) 	:	 3 	in	 [ -1.2909841813155656 , -0.8855190732074014 ]
+ln(s_R0) 	:	 3 	in	 [ -2.024953356395766 , -1.6194882482876016 ]
+ln(s_z0) 	:	 3 	in	 [ -2.3025850929940455 , -1.8971199848858813 ]
+
+
+ *** Start running the GRID analysis *** 
+<__array_function__ internals>:5: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
+
+
+Finished analysis of:  ../out/mock_data_exampleB_py3_test0_analysis_output_GRID.sav
+time: 0 hours 4 minutes 53 seconds
+===== adapt fitting range =====
+/u/twilm/research/RoadMapping/py/adapt_fitting_range.py:125: RuntimeWarning: divide by zero encountered in log
+  logprob = numpy.log(numpy.sum(numpy.exp(loglike_out),axis=axistuple))
+
+Zoom in	      -->  $v_{circ}(R_\odot)$ [km s$^-1$]
+Zoom in	      -->  $a_{disk}$ [kpc]
+Gauss through 3 points	 ( [0.21694439 1.45178205 0.33201668] )	      -->  $b_{disk}$ [kpc]
+Zoom in	      -->  ln($h_R$/8kpc)
+shift range	      -->  ln($\sigma_{R,0}$/220km s$^-1$)
+Zoom in	      -->  ln($\sigma_{z,0}$/220km s$^-1$)
+FINE GRID: 0
+1 th iteration
+DEBUGGING OUTPUT in analyze_mockdata_RoadMapping(): Switched off warning about only using galpy's version 1.2 in October 2021. Make sure this does not lead to unexpected problems when using different galpy versions. Especially for Python 3.
+______________________________________________________________________
+_____Analyse mock data set:  mock_data_exampleB_py3
+_____test:  test0
+_____with:  GRID
+______________________________________________________________________
+DATA TYPE: * mock data
+           * no measurement errors
+           *  500  stars
+POTENTIAL: * potential with Miyamoto-Nagai disk, NFW halo + Hernquist bulge 
+             (galpy MWPotential like)
+           * action calculation: actionAngleStaeckelGrid
+           * true parameters:
+                R_sun [kpc], v_circ(R_sun) [km/s], a_d [kpc], b_d [kpc], f_h, a_h [kpc]
+                [  8.  240.    2.5   0.3   0.3  18. ]
+           * parameters kept fixed?
+                [ True False False False  True  True]
+             at value
+                [  8.   216.     2.25   0.27   0.3   18.  ]
+QUASI-ISOTHERMAL DISTRIBUTION FUNCTION:
+           * true parameters:
+                hr [kpc], sr [km/s], sz [km/s], hsr [kpc], hsz [kpc]
+                [ 2.5 33.  25.   8.   7. ]
+           * parameters kept fixed?
+                [False False False  True  True]
+             at value
+                [ 2.75 36.3  27.5   8.    7.  ]
+           * fiducial qdf parameters:
+                [ 2.09127562 40.6878954  26.94438689  8.          7.        ]
+SELECTION FUNCTION:
+           * wedge
+           * true parameters:
+                R_min [kpc], R_max [kpc], z_min [kpc], z_max [kpc], phi_min [deg], phi_max [deg]
+                [   5.   10.   -1.    1. -180.  180.]
+PRIORS:
+           * Flat priors on potential parameters (inside physical regime).
+           * Logarithmically flat priors on DF parameters.
+NUMERICAL PRECISION:
+           * N_spatial =  20 , N_velocity =  28
+           * N_sigma   =  5.5 , vT_max [galpy] =  1.5
+           * # of MCMC steps:  200 , # of burn-in steps:  100
+           * Analysis uses FIDUCIAL qDF for fitting range also in the MCMC.
+           * Analysis uses the Staeckel fudge with DEFAULT focal length DELTA=0.45*ro for each potential.
+           * Analysis uses the actionAngleStaeckelGrid with:
+             Rmax =  5.0 , nE =  70 ,
+             npsi =  40 , nLz =  50
+Parameter intervals to investigate 
+v_c [km/s] 	:	 3 	in	 [ 237.6 , 302.4 ]
+a_d [kpc] 	:	 3 	in	 [ 2.47496908850189 , 3.1499690885018903 ]
+b_d [kpc] 	:	 3 	in	 [ 0.18523800277358976 , 0.36156814666784826 ]
+ln(h_R) 	:	 3 	in	 [ -1.493716734132437 , -1.1896179030513143 ]
+ln(s_R0) 	:	 3 	in	 [ -1.890429462444456 , -1.4849643543362918 ]
+ln(s_z0) 	:	 3 	in	 [ -2.2012188262359933 , -1.9984862721819108 ]
+
+
+ *** Start running the GRID analysis *** 
+
+Finished analysis of:  ../out/mock_data_exampleB_py3_test0_analysis_output_GRID.sav
+time: 0 hours 4 minutes 51 seconds
+===== adapt fitting range =====
+Zoom in	      -->  $v_{circ}(R_\odot)$ [km s$^-1$]
+shift range	      -->  $a_{disk}$ [kpc]
+shift range	      -->  $b_{disk}$ [kpc]
+shift range	      -->  ln($h_R$/8kpc)
+Zoom in	      -->  ln($\sigma_{R,0}$/220km s$^-1$)
+shift range	      -->  ln($\sigma_{z,0}$/220km s$^-1$)
+FINE GRID: 0
+2 th iteration
+DEBUGGING OUTPUT in analyze_mockdata_RoadMapping(): Switched off warning about only using galpy's version 1.2 in October 2021. Make sure this does not lead to unexpected problems when using different galpy versions. Especially for Python 3.
+______________________________________________________________________
+_____Analyse mock data set:  mock_data_exampleB_py3
+_____test:  test0
+_____with:  GRID
+______________________________________________________________________
+DATA TYPE: * mock data
+           * no measurement errors
+           *  500  stars
+POTENTIAL: * potential with Miyamoto-Nagai disk, NFW halo + Hernquist bulge 
+             (galpy MWPotential like)
+           * action calculation: actionAngleStaeckelGrid
+           * true parameters:
+                R_sun [kpc], v_circ(R_sun) [km/s], a_d [kpc], b_d [kpc], f_h, a_h [kpc]
+                [  8.  240.    2.5   0.3   0.3  18. ]
+           * parameters kept fixed?
+                [ True False False False  True  True]
+             at value
+                [  8.   216.     2.25   0.27   0.3   18.  ]
+QUASI-ISOTHERMAL DISTRIBUTION FUNCTION:
+           * true parameters:
+                hr [kpc], sr [km/s], sz [km/s], hsr [kpc], hsz [kpc]
+                [ 2.5 33.  25.   8.   7. ]
+           * parameters kept fixed?
+                [False False False  True  True]
+             at value
+                [ 2.75 36.3  27.5   8.    7.  ]
+           * fiducial qdf parameters:
+                [ 2.42710503 31.57971378 25.28657117  8.          7.        ]
+SELECTION FUNCTION:
+           * wedge
+           * true parameters:
+                R_min [kpc], R_max [kpc], z_min [kpc], z_max [kpc], phi_min [deg], phi_max [deg]
+                [   5.   10.   -1.    1. -180.  180.]
+PRIORS:
+           * Flat priors on potential parameters (inside physical regime).
+           * Logarithmically flat priors on DF parameters.
+NUMERICAL PRECISION:
+           * N_spatial =  20 , N_velocity =  28
+           * N_sigma   =  5.5 , vT_max [galpy] =  1.5
+           * # of MCMC steps:  200 , # of burn-in steps:  100
+           * Analysis uses FIDUCIAL qDF for fitting range also in the MCMC.
+           * Analysis uses the Staeckel fudge with DEFAULT focal length DELTA=0.45*ro for each potential.
+           * Analysis uses the actionAngleStaeckelGrid with:
+             Rmax =  5.0 , nE =  70 ,
+             npsi =  40 , nLz =  50
+Parameter intervals to investigate 
+v_c [km/s] 	:	 3 	in	 [ 205.20000000000005 , 253.8 ]
+a_d [kpc] 	:	 3 	in	 [ 2.2595432469353973 , 2.934543246935397 ]
+b_d [kpc] 	:	 3 	in	 [ 0.23193718257470897 , 0.40826732646896746 ]
+ln(h_R) 	:	 3 	in	 [ -1.3447917574122574 , -1.0406929263311346 ]
+ln(s_R0) 	:	 3 	in	 [ -2.093162016498488 , -1.789063185417365 ]
+ln(s_z0) 	:	 3 	in	 [ -2.2647203524995723 , -2.0619877984454895 ]
+
+
+ *** Start running the GRID analysis *** 
+
+Finished analysis of:  ../out/mock_data_exampleB_py3_test0_analysis_output_GRID.sav
+time: 0 hours 4 minutes 55 seconds
+===== adapt fitting range =====
+Zoom in	      -->  $v_{circ}(R_\odot)$ [km s$^-1$]
+shift range	      -->  $a_{disk}$ [kpc]
+shift range	      -->  $b_{disk}$ [kpc]
+Zoom in	      -->  ln($h_R$/8kpc)
+Zoom in	      -->  ln($\sigma_{R,0}$/220km s$^-1$)
+Gauss through 3 points	 ( [0.08051642 1.80717654 0.3870273 ] )	      -->  ln($\sigma_{z,0}$/220km s$^-1$)
+FINE GRID: 0
+3 th iteration
+DEBUGGING OUTPUT in analyze_mockdata_RoadMapping(): Switched off warning about only using galpy's version 1.2 in October 2021. Make sure this does not lead to unexpected problems when using different galpy versions. Especially for Python 3.
+______________________________________________________________________
+_____Analyse mock data set:  mock_data_exampleB_py3
+_____test:  test0
+_____with:  GRID
+______________________________________________________________________
+DATA TYPE: * mock data
+           * no measurement errors
+           *  500  stars
+POTENTIAL: * potential with Miyamoto-Nagai disk, NFW halo + Hernquist bulge 
+             (galpy MWPotential like)
+           * action calculation: actionAngleStaeckelGrid
+           * true parameters:
+                R_sun [kpc], v_circ(R_sun) [km/s], a_d [kpc], b_d [kpc], f_h, a_h [kpc]
+                [  8.  240.    2.5   0.3   0.3  18. ]
+           * parameters kept fixed?
+                [ True False False False  True  True]
+             at value
+                [  8.   216.     2.25   0.27   0.3   18.  ]
+QUASI-ISOTHERMAL DISTRIBUTION FUNCTION:
+           * true parameters:
+                hr [kpc], sr [km/s], sz [km/s], hsr [kpc], hsz [kpc]
+                [ 2.5 33.  25.   8.   7. ]
+           * parameters kept fixed?
+                [False False False  True  True]
+             at value
+                [ 2.75 36.3  27.5   8.    7.  ]
+           * fiducial qdf parameters:
+                [ 2.93506282 38.19009579 25.72282016  8.          7.        ]
+SELECTION FUNCTION:
+           * wedge
+           * true parameters:
+                R_min [kpc], R_max [kpc], z_min [kpc], z_max [kpc], phi_min [deg], phi_max [deg]
+                [   5.   10.   -1.    1. -180.  180.]
+PRIORS:
+           * Flat priors on potential parameters (inside physical regime).
+           * Logarithmically flat priors on DF parameters.
+NUMERICAL PRECISION:
+           * N_spatial =  20 , N_velocity =  28
+           * N_sigma   =  5.5 , vT_max [galpy] =  1.5
+           * # of MCMC steps:  200 , # of burn-in steps:  100
+           * Analysis uses FIDUCIAL qDF for fitting range also in the MCMC.
+           * Analysis uses the Staeckel fudge with DEFAULT focal length DELTA=0.45*ro for each potential.
+           * Analysis uses the actionAngleStaeckelGrid with:
+             Rmax =  5.0 , nE =  70 ,
+             npsi =  40 , nLz =  50
+Parameter intervals to investigate 
+v_c [km/s] 	:	 3 	in	 [ 217.35000139408436 , 241.6500013940843 ]
+a_d [kpc] 	:	 3 	in	 [ 1.9298855194411484 , 2.604885519441148 ]
+b_d [kpc] 	:	 3 	in	 [ 0.1903123249801016 , 0.3666424688743601 ]
+ln(h_R) 	:	 3 	in	 [ -1.116749747257382 , -0.8886756239465399 ]
+ln(s_R0) 	:	 3 	in	 [ -1.8650883986073175 , -1.6370142752964754 ]
+ln(s_z0) 	:	 3 	in	 [ -2.287239846745828 , -2.0052581621733094 ]
+
+
+ *** Start running the GRID analysis *** 
+
+Finished analysis of:  ../out/mock_data_exampleB_py3_test0_analysis_output_GRID.sav
+time: 0 hours 4 minutes 57 seconds
+===== adapt fitting range =====
+Zoom in	      -->  $v_{circ}(R_\odot)$ [km s$^-1$]
+Zoom in	      -->  $a_{disk}$ [kpc]
+Gauss through 3 points	 ( [0.03136583 1.01918052 0.14377197] )	      -->  $b_{disk}$ [kpc]
+shift range	      -->  ln($h_R$/8kpc)
+Zoom in	      -->  ln($\sigma_{R,0}$/220km s$^-1$)
+Gauss through 3 points	 ( [0.00123263 1.16190182 0.03118387] )	      -->  ln($\sigma_{z,0}$/220km s$^-1$)
+FINE GRID: 0
+4 th iteration
+DEBUGGING OUTPUT in analyze_mockdata_RoadMapping(): Switched off warning about only using galpy's version 1.2 in October 2021. Make sure this does not lead to unexpected problems when using different galpy versions. Especially for Python 3.
+______________________________________________________________________
+_____Analyse mock data set:  mock_data_exampleB_py3
+_____test:  test0
+_____with:  GRID
+______________________________________________________________________
+DATA TYPE: * mock data
+           * no measurement errors
+           *  500  stars
+POTENTIAL: * potential with Miyamoto-Nagai disk, NFW halo + Hernquist bulge 
+             (galpy MWPotential like)
+           * action calculation: actionAngleStaeckelGrid
+           * true parameters:
+                R_sun [kpc], v_circ(R_sun) [km/s], a_d [kpc], b_d [kpc], f_h, a_h [kpc]
+                [  8.  240.    2.5   0.3   0.3  18. ]
+           * parameters kept fixed?
+                [ True False False False  True  True]
+             at value
+                [  8.   216.     2.25   0.27   0.3   18.  ]
+QUASI-ISOTHERMAL DISTRIBUTION FUNCTION:
+           * true parameters:
+                hr [kpc], sr [km/s], sz [km/s], hsr [kpc], hsz [kpc]
+                [ 2.5 33.  25.   8.   7. ]
+           * parameters kept fixed?
+                [False False False  True  True]
+             at value
+                [ 2.75 36.3  27.5   8.    7.  ]
+           * fiducial qdf parameters:
+                [ 2.6231564  33.11657662 26.2886839   8.          7.        ]
+SELECTION FUNCTION:
+           * wedge
+           * true parameters:
+                R_min [kpc], R_max [kpc], z_min [kpc], z_max [kpc], phi_min [deg], phi_max [deg]
+                [   5.   10.   -1.    1. -180.  180.]
+PRIORS:
+           * Flat priors on potential parameters (inside physical regime).
+           * Logarithmically flat priors on DF parameters.
+NUMERICAL PRECISION:
+           * N_spatial =  20 , N_velocity =  28
+           * N_sigma   =  5.5 , vT_max [galpy] =  1.5
+           * # of MCMC steps:  200 , # of burn-in steps:  100
+           * Analysis uses FIDUCIAL qDF for fitting range also in the MCMC.
+           * Analysis uses the Staeckel fudge with DEFAULT focal length DELTA=0.45*ro for each potential.
+           * Analysis uses the actionAngleStaeckelGrid with:
+             Rmax =  5.0 , nE =  70 ,
+             npsi =  40 , nLz =  50
+Parameter intervals to investigate 
+v_c [km/s] 	:	 3 	in	 [ 235.57500139408398 , 253.80000139408395 ]
+a_d [kpc] 	:	 3 	in	 [ 2.434739454021634 , 2.9409894540216346 ]
+b_d [kpc] 	:	 3 	in	 [ 0.17740994055140966 , 0.4042218733730619 ]
+ln(h_R) 	:	 3 	in	 [ -1.2291002779246565 , -1.0010261546138142 ]
+ln(s_R0) 	:	 3 	in	 [ -1.9791213812495423 , -1.8080657887664109 ]
+ln(s_z0) 	:	 3 	in	 [ -2.2552293900961256 , -1.993748548998141 ]
+
+
+ *** Start running the GRID analysis *** 
+
+Finished analysis of:  ../out/mock_data_exampleB_py3_test0_analysis_output_GRID.sav
+time: 0 hours 4 minutes 57 seconds
+===== adapt fitting range =====
+shift range	      -->  $v_{circ}(R_\odot)$ [km s$^-1$]
+shift range	      -->  $a_{disk}$ [kpc]
+Gauss through 3 points	 ( [0.50884205 4.7969389  1.16717471] )	      -->  $b_{disk}$ [kpc]
+Gauss through 3 points	 ( [0.71393131 3.01088882 2.74813553] )	      -->  ln($h_R$/8kpc)
+Gauss through 3 points	 ( [4.35008430e-06 5.19157937e+00 1.28137194e+00] )	      -->  ln($\sigma_{R,0}$/220km s$^-1$)
+Gauss through 3 points	 ( [1.15656564 4.82994006 0.48644996] )	      -->  ln($\sigma_{z,0}$/220km s$^-1$)
+FINE GRID: 0
+5 th iteration
+DEBUGGING OUTPUT in analyze_mockdata_RoadMapping(): Switched off warning about only using galpy's version 1.2 in October 2021. Make sure this does not lead to unexpected problems when using different galpy versions. Especially for Python 3.
+______________________________________________________________________
+_____Analyse mock data set:  mock_data_exampleB_py3
+_____test:  test0
+_____with:  GRID
+______________________________________________________________________
+DATA TYPE: * mock data
+           * no measurement errors
+           *  500  stars
+POTENTIAL: * potential with Miyamoto-Nagai disk, NFW halo + Hernquist bulge 
+             (galpy MWPotential like)
+           * action calculation: actionAngleStaeckelGrid
+           * true parameters:
+                R_sun [kpc], v_circ(R_sun) [km/s], a_d [kpc], b_d [kpc], f_h, a_h [kpc]
+                [  8.  240.    2.5   0.3   0.3  18. ]
+           * parameters kept fixed?
+                [ True False False False  True  True]
+             at value
+                [  8.   216.     2.25   0.27   0.3   18.  ]
+QUASI-ISOTHERMAL DISTRIBUTION FUNCTION:
+           * true parameters:
+                hr [kpc], sr [km/s], sz [km/s], hsr [kpc], hsz [kpc]
+                [ 2.5 33.  25.   8.   7. ]
+           * parameters kept fixed?
+                [False False False  True  True]
+             at value
+                [ 2.75 36.3  27.5   8.    7.  ]
+           * fiducial qdf parameters:
+                [ 2.75824127 34.29581227 25.89213066  8.          7.        ]
+SELECTION FUNCTION:
+           * wedge
+           * true parameters:
+                R_min [kpc], R_max [kpc], z_min [kpc], z_max [kpc], phi_min [deg], phi_max [deg]
+                [   5.   10.   -1.    1. -180.  180.]
+PRIORS:
+           * Flat priors on potential parameters (inside physical regime).
+           * Logarithmically flat priors on DF parameters.
+NUMERICAL PRECISION:
+           * N_spatial =  20 , N_velocity =  28
+           * N_sigma   =  5.5 , vT_max [galpy] =  1.5
+           * # of MCMC steps:  200 , # of burn-in steps:  100
+           * Analysis uses FIDUCIAL qDF for fitting range also in the MCMC.
+           * Analysis uses the Staeckel fudge with DEFAULT focal length DELTA=0.45*ro for each potential.
+           * Analysis uses the actionAngleStaeckelGrid with:
+             Rmax =  5.0 , nE =  70 ,
+             npsi =  40 , nLz =  50
+Parameter intervals to investigate 
+v_c [km/s] 	:	 3 	in	 [ 226.98791363157378 , 245.21291363157374 ]
+a_d [kpc] 	:	 3 	in	 [ 2.3428547129259365 , 2.849104712925937 ]
+b_d [kpc] 	:	 3 	in	 [ 0.12578055484216605 , 0.4815965064882201 ]
+ln(h_R) 	:	 3 	in	 [ -1.3413821161348014 , -0.7883144576990684 ]
+ln(s_R0) 	:	 3 	in	 [ -1.9240059294277383 , -1.7932026524768656 ]
+ln(s_z0) 	:	 3 	in	 [ -2.3429137008675407 , -1.936463218035405 ]
+
+
+ *** Start running the GRID analysis *** 
+
+Finished analysis of:  ../out/mock_data_exampleB_py3_test0_analysis_output_GRID.sav
+time: 0 hours 4 minutes 57 seconds
+===== adapt fitting range =====
+Gauss through 3 points	 ( [8.85791493e-22 1.78743237e+00 2.54100406e-02] )	      -->  $v_{circ}(R_\odot)$ [km s$^-1$]
+Gauss through 3 points	 ( [0.42843253 1.13342368 0.2509862 ] )	      -->  $a_{disk}$ [kpc]
+Gauss through 3 points	 ( [1.58606931e-01 1.65390349e+00 3.31991038e-04] )	      -->  $b_{disk}$ [kpc]
+Gauss through 3 points	 ( [0.02698417 1.77468549 0.01117275] )	      -->  ln($h_R$/8kpc)
+Gauss through 3 points	 ( [0.02762262 1.75721052 0.02800928] )	      -->  ln($\sigma_{R,0}$/220km s$^-1$)
+Gauss through 3 points	 ( [2.84361949e-04 1.65395112e+00 1.58606931e-01] )	      -->  ln($\sigma_{z,0}$/220km s$^-1$)
+FINE GRID: 1
+DEBUGGING OUTPUT in analyze_mockdata_RoadMapping(): Switched off warning about only using galpy's version 1.2 in October 2021. Make sure this does not lead to unexpected problems when using different galpy versions. Especially for Python 3.
+______________________________________________________________________
+_____Analyse mock data set:  mock_data_exampleB_py3
+_____test:  test0
+_____with:  MCMC
+______________________________________________________________________
+DATA TYPE: * mock data
+           * no measurement errors
+           *  500  stars
+POTENTIAL: * potential with Miyamoto-Nagai disk, NFW halo + Hernquist bulge 
+             (galpy MWPotential like)
+           * action calculation: actionAngleStaeckelGrid
+           * true parameters:
+                R_sun [kpc], v_circ(R_sun) [km/s], a_d [kpc], b_d [kpc], f_h, a_h [kpc]
+                [  8.  240.    2.5   0.3   0.3  18. ]
+           * parameters kept fixed?
+                [ True False False False  True  True]
+             at value
+                [  8.   216.     2.25   0.27   0.3   18.  ]
+QUASI-ISOTHERMAL DISTRIBUTION FUNCTION:
+           * true parameters:
+                hr [kpc], sr [km/s], sz [km/s], hsr [kpc], hsz [kpc]
+                [ 2.5 33.  25.   8.   7. ]
+           * parameters kept fixed?
+                [False False False  True  True]
+             at value
+                [ 2.75 36.3  27.5   8.    7.  ]
+           * fiducial qdf parameters:
+                [ 2.72214031 34.2976925  27.44785353  8.          7.        ]
+SELECTION FUNCTION:
+           * wedge
+           * true parameters:
+                R_min [kpc], R_max [kpc], z_min [kpc], z_max [kpc], phi_min [deg], phi_max [deg]
+                [   5.   10.   -1.    1. -180.  180.]
+PRIORS:
+           * Flat priors on potential parameters (inside physical regime).
+           * Logarithmically flat priors on DF parameters.
+NUMERICAL PRECISION:
+           * N_spatial =  20 , N_velocity =  28
+           * N_sigma   =  5.5 , vT_max [galpy] =  1.5
+           * # of MCMC steps:  200 , # of burn-in steps:  100
+           * Analysis uses FIDUCIAL qDF for fitting range also in the MCMC.
+           * Analysis uses the Staeckel fudge with DEFAULT focal length DELTA=0.45*ro for each potential.
+           * Analysis uses the actionAngleStaeckelGrid with:
+             Rmax =  5.0 , nE =  70 ,
+             npsi =  40 , nLz =  50
+Parameter intervals to investigate with MCMC:
+     * potential: central grid point only used for initial walker positions
+     * DF:        central grid point used for initial walker positions & fiducial qDF / fitting range
+v_c [km/s] 	:	 12 	in	 [ 236.18544025939096 , 243.673780049925 ]
+a_d [kpc] 	:	 12 	in	 [ 2.0865371348303805 , 3.0508539447543948 ]
+b_d [kpc] 	:	 12 	in	 [ 0.09117586345595136 , 0.41512113354365493 ]
+ln(h_R) 	:	 12 	in	 [ -1.3507349969158788 , -0.8053111877906828 ]
+ln(s_R0) 	:	 12 	in	 [ -1.9266868761117422 , -1.79041206117044 ]
+ln(s_z0) 	:	 12 	in	 [ -2.265055839337634 , -1.8976233148546107 ]
+ *** Save & read shared data *** 
+ *** Start running the MCMC *** 
+
+Finished analysis of:  ../out/mock_data_exampleB_py3_test0_analysis_output_MCMC.sav
+time: 7 hours 20 minutes 24 seconds
+TOTAL TIME TAKEN FOR ANALYSIS:  469.9755354126294  minutes
