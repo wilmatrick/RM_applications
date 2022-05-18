@@ -1,4 +1,4 @@
-# CODE VERSION: 2021-November-10
+# CODE VERSION: 2022-May-18
 
 # import packages
 import math
@@ -6,7 +6,8 @@ import numpy
 import time
 from galpy.util import bovy_conversion
 
-def calculate_actions_frequencies_angles(aAS,_REFR0,_REFV0,R_kpc,z_kpc,phi_rad,vR_kms,vz_kms,vT_kms,quiet=False):
+def calculate_actions_frequencies_angles(aAS,galpy_scale_length,galpy_scale_velocity,
+                                         R_kpc,z_kpc,phi_rad,vR_kms,vz_kms,vT_kms,quiet=False):
     
     start = time.time()
     
@@ -33,19 +34,19 @@ def calculate_actions_frequencies_angles(aAS,_REFR0,_REFV0,R_kpc,z_kpc,phi_rad,v
         for x in range(N):
 
             jfa = aAS.actionsFreqsAngles(
-                           R_kpc [x*M:(x+1)*M]/_REFR0,
-                           vR_kms[x*M:(x+1)*M]/_REFV0,
-                           vT_kms[x*M:(x+1)*M]/_REFV0,
-                           z_kpc [x*M:(x+1)*M]/_REFR0,
-                           vz_kms[x*M:(x+1)*M]/_REFV0,
+                           R_kpc [x*M:(x+1)*M]/galpy_scale_length,
+                           vR_kms[x*M:(x+1)*M]/galpy_scale_velocity,
+                           vT_kms[x*M:(x+1)*M]/galpy_scale_velocity,
+                           z_kpc [x*M:(x+1)*M]/galpy_scale_length,
+                           vz_kms[x*M:(x+1)*M]/galpy_scale_velocity,
                            phi_rad[x*M:(x+1)*M])
 
-            JR_kpckms[x*M:(x+1)*M] = jfa[0]*_REFR0*_REFV0
-            Lz_kpckms[x*M:(x+1)*M] = jfa[1]*_REFR0*_REFV0
-            Jz_kpckms[x*M:(x+1)*M] = jfa[2]*_REFR0*_REFV0
-            OmegaR_kmskpc[x*M:(x+1)*M]  = jfa[3]*bovy_conversion.freq_in_kmskpc(_REFV0, _REFR0)
-            OmegaT_kmskpc[x*M:(x+1)*M]  = jfa[4]*bovy_conversion.freq_in_kmskpc(_REFV0, _REFR0)
-            Omegaz_kmskpc[x*M:(x+1)*M]  = jfa[5]*bovy_conversion.freq_in_kmskpc(_REFV0, _REFR0)
+            JR_kpckms[x*M:(x+1)*M] = jfa[0]*galpy_scale_length*galpy_scale_velocity
+            Lz_kpckms[x*M:(x+1)*M] = jfa[1]*galpy_scale_length*galpy_scale_velocity
+            Jz_kpckms[x*M:(x+1)*M] = jfa[2]*galpy_scale_length*galpy_scale_velocity
+            OmegaR_kmskpc[x*M:(x+1)*M]  = jfa[3]*bovy_conversion.freq_in_kmskpc(galpy_scale_velocity, galpy_scale_length)
+            OmegaT_kmskpc[x*M:(x+1)*M]  = jfa[4]*bovy_conversion.freq_in_kmskpc(galpy_scale_velocity, galpy_scale_length)
+            Omegaz_kmskpc[x*M:(x+1)*M]  = jfa[5]*bovy_conversion.freq_in_kmskpc(galpy_scale_velocity, galpy_scale_length)
             wR_rad[x*M:(x+1)*M] = jfa[6]
             wT_rad[x*M:(x+1)*M] = jfa[7]
             wz_rad[x*M:(x+1)*M] = jfa[8]
@@ -58,29 +59,29 @@ def calculate_actions_frequencies_angles(aAS,_REFR0,_REFV0,R_kpc,z_kpc,phi_rad,v
     if K > 0:
 
         jfa = aAS.actionsFreqsAngles(
-                       R_kpc [N*M::]/_REFR0,
-                       vR_kms[N*M::]/_REFV0,
-                       vT_kms[N*M::]/_REFV0,
-                       z_kpc [N*M::]/_REFR0,
-                       vz_kms[N*M::]/_REFV0,
+                       R_kpc [N*M::]/galpy_scale_length,
+                       vR_kms[N*M::]/galpy_scale_velocity,
+                       vT_kms[N*M::]/galpy_scale_velocity,
+                       z_kpc [N*M::]/galpy_scale_length,
+                       vz_kms[N*M::]/galpy_scale_velocity,
                        phi_rad[N*M::])
 
-        JR_kpckms[N*M::] = jfa[0]*_REFR0*_REFV0
-        Lz_kpckms[N*M::] = jfa[1]*_REFR0*_REFV0
-        Jz_kpckms[N*M::] = jfa[2]*_REFR0*_REFV0
-        OmegaR_kmskpc[N*M::] = jfa[3]*bovy_conversion.freq_in_kmskpc(_REFV0, _REFR0)
-        OmegaT_kmskpc[N*M::] = jfa[4]*bovy_conversion.freq_in_kmskpc(_REFV0, _REFR0)
-        Omegaz_kmskpc[N*M::] = jfa[5]*bovy_conversion.freq_in_kmskpc(_REFV0, _REFR0)
+        JR_kpckms[N*M::] = jfa[0]*galpy_scale_length*galpy_scale_velocity
+        Lz_kpckms[N*M::] = jfa[1]*galpy_scale_length*galpy_scale_velocity
+        Jz_kpckms[N*M::] = jfa[2]*galpy_scale_length*galpy_scale_velocity
+        OmegaR_kmskpc[N*M::] = jfa[3]*bovy_conversion.freq_in_kmskpc(galpy_scale_velocity, galpy_scale_length)
+        OmegaT_kmskpc[N*M::] = jfa[4]*bovy_conversion.freq_in_kmskpc(galpy_scale_velocity, galpy_scale_length)
+        Omegaz_kmskpc[N*M::] = jfa[5]*bovy_conversion.freq_in_kmskpc(galpy_scale_velocity, galpy_scale_length)
         wR_rad[N*M::] = jfa[6]
         wT_rad[N*M::] = jfa[7]
         wz_rad[N*M::] = jfa[8]
                             
     # Flag stars for which action calculation has failed:
     if numpy.any(JR_kpckms < 0.):
-        if numpy.any(JR_kpckms/_REFR0/_REFV0 == -9999.):
+        if numpy.any(JR_kpckms/galpy_scale_length/galpy_scale_velocity == -9999.):
                             
             # Check for stars with standard galpy error flag and set to NaN:
-            indices = numpy.argwhere(JR_kpckms/_REFR0/_REFV0 == -9999.)
+            indices = numpy.argwhere(JR_kpckms/galpy_scale_length/galpy_scale_velocity == -9999.)
             for ii in indices:
                 JR_kpckms[ii] = numpy.nan
                 Lz_kpckms[ii] = numpy.nan

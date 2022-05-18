@@ -1,5 +1,5 @@
 print("RUNNING NOW: integrate_mock_data_in_quadrupole_bar_potential_EXAMPLE.py")
-print("CODE VERSION: 2021-November-11")
+print("CODE VERSION: 2022-May-18")
 
 #==============================
 # Import packages
@@ -74,7 +74,7 @@ Fourier_m = 2. # pure quadrupole! (or use for example: numpy.array([2.,4.]))
 # density slopes of the bar component(s):
 slope_p = -3. # (or use for example: numpy.array([-3.,-5.]))
                       
-# bar strength at _REFR0*ro of the bar component(s):
+# bar strength at R=galpy_scale_length of the bar component(s):
 alpha_bar = 0.01 # weak bar (or use for example: numpy.array([0.01,-0.0015]))
 # adding a negative alpha_(m=4) component creates a "boxy" bar, positive a "pointy" bar
 name_shape = 'm2a01' # (or use for example: 'm2a01_m4a0015boxy')
@@ -101,15 +101,19 @@ print("ro = "+str(ro)+", vo = "+str(vo))
 pot_axi, aAS_axi = setup_Potential_and_ActionAngle_object(
     pottype,potPar_phys)
 
+# Galpy scale units:
+galpy_scale_length   = _REFR0 * ro
+galpy_scale_velocity = _REFV0 * vo
+
 #==============================
 # Setup bar potential
 #==============================
 
 #parameters to galpy units:
-bar_omega_galpy = bar_omega_kmskpc/bovy_conversion.freq_in_kmskpc(_REFV0*vo, _REFR0*ro) # Pattern speed fo the bar
+bar_omega_galpy = bar_omega_kmskpc/bovy_conversion.freq_in_kmskpc(galpy_scale_velocity, galpy_scale_length) # Pattern speed fo the bar
 bar_angle_rad   = bar_angle_deg/180.*numpy.pi # Bar Angle
-Rbar_galpy      = Rbar_kpc/_REFR0/ro             # Bar radius
-Af_bar          = -alpha_bar/slope_p*(Rbar_kpc/_REFR0/ro)**slope_p # bar strength
+Rbar_galpy      = Rbar_kpc/galpy_scale_length             # Bar radius
+Af_bar          = -alpha_bar/slope_p*(Rbar_kpc/galpy_scale_length)**slope_p # bar strength
     
 if not isinstance(Fourier_m,numpy.ndarray) and (Fourier_m == 2):
     
@@ -185,7 +189,7 @@ _NSTARS = len(R_kpc_start)
 #_____prepare output times_____
 
 # bar period in units of Gyr:
-period_Gyr = 2.*math.pi/bar_omega_galpy*bovy_conversion.time_in_Gyr(_REFV0*vo, _REFR0*ro)
+period_Gyr = 2.*math.pi/bar_omega_galpy*bovy_conversion.time_in_Gyr(galpy_scale_velocity, galpy_scale_length)
 
 # number of orbit output steps:
 n_steps       = 5001
@@ -201,8 +205,8 @@ start_Gyr     = start_period*period_Gyr
 stop_Gyr      = stop_period *period_Gyr
 
 # integration output steps in galpy units:
-steady_galpy = steady_period*period_Gyr                  /bovy_conversion.time_in_Gyr(_REFV0*vo, _REFR0*ro)
-ts_galpy     = numpy.linspace(start_Gyr,stop_Gyr,n_steps)/bovy_conversion.time_in_Gyr(_REFV0*vo, _REFR0*ro)
+steady_galpy = steady_period*period_Gyr                  /bovy_conversion.time_in_Gyr(galpy_scale_velocity, galpy_scale_length)
+ts_galpy     = numpy.linspace(start_Gyr,stop_Gyr,n_steps)/bovy_conversion.time_in_Gyr(galpy_scale_velocity, galpy_scale_length)
 
 # which output steps correspond to the times we want to save to file:
 index_output_times = numpy.isin(ts_period,t_out_period,assume_unique=True)
@@ -287,11 +291,11 @@ def integrate_orbit_prepare_output(pot_bar,\
     #********** ORBIT INTEGRATION **********
 
     #initialize orbit:
-    R    = R_kpc_start /_REFR0
-    vR   = vR_kms_start/_REFV0
-    vT   = vT_kms_start/_REFV0
-    z    = z_kpc_start /_REFR0
-    vz   = vz_kms_start/_REFV0
+    R    = R_kpc_start /galpy_scale_length
+    vR   = vR_kms_start/galpy_scale_velocity
+    vT   = vT_kms_start/galpy_scale_velocity
+    z    = z_kpc_start /galpy_scale_length
+    vz   = vz_kms_start/galpy_scale_velocity
     phi  = phi_rad_start
     vxvv = [R,vR,vT,z,vz,phi]
 
@@ -300,17 +304,17 @@ def integrate_orbit_prepare_output(pot_bar,\
     o.integrate(ts_galpy,pot_bar,method='rk4_c')
     
     #spatial coordinates:
-    R_kpc_p   = o.R(ts_galpy)*_REFR0
-    z_kpc_p   = o.z(ts_galpy)*_REFR0
+    R_kpc_p   = o.R(ts_galpy)*galpy_scale_length
+    z_kpc_p   = o.z(ts_galpy)*galpy_scale_length
     phi_rad_p = o.phi(ts_galpy)
     cos_phi_rad_p = numpy.cos(phi_rad_p)
-    x_kpc_p   = o.x(ts_galpy)*_REFR0
-    y_kpc_p   = o.y(ts_galpy)*_REFR0
+    x_kpc_p   = o.x(ts_galpy)*galpy_scale_length
+    y_kpc_p   = o.y(ts_galpy)*galpy_scale_length
     
     #velocities:
-    vR_kms_p  = o.vR(ts_galpy)*_REFV0
-    vT_kms_p  = o.vT(ts_galpy)*_REFV0
-    vz_kms_p  = o.vz(ts_galpy)*_REFV0
+    vR_kms_p  = o.vR(ts_galpy)*galpy_scale_velocity
+    vT_kms_p  = o.vT(ts_galpy)*galpy_scale_velocity
+    vz_kms_p  = o.vz(ts_galpy)*galpy_scale_velocity
     
     #********** CALCULATE ACTIONS **********
     
@@ -321,7 +325,7 @@ def integrate_orbit_prepare_output(pot_bar,\
         wR_rad_p,wT_rad_p,wz_rad_p \
             = calculate_actions_frequencies_angles(
                 aAS_axi,
-                _REFR0*ro,_REFV0*vo,
+                galpy_scale_length,galpy_scale_velocity,
                 R_kpc_p,z_kpc_p,phi_rad_p,vR_kms_p,vz_kms_p,vT_kms_p,
                 quiet=True
                 )
@@ -369,7 +373,7 @@ def integrate_orbit_prepare_output(pot_bar,\
         start = 1                    # don't take frequency = 0
         if   n%2 == 0: end = n//2-1  # take only positive frequencies
         elif n%2 == 1: end = (n-1)//2
-        om_kmskpc = 2.*math.pi*freq[start:end]*bovy_conversion.freq_in_kmskpc(_REFV0*vo, _REFR0*ro)
+        om_kmskpc = 2.*math.pi*freq[start:end]*bovy_conversion.freq_in_kmskpc(galpy_scale_velocity, galpy_scale_length)
         amp_R_kpc = numpy.abs(fourier_R  [start:end])/n
         amp_phi   = numpy.abs(fourier_phi[start:end])/n
         amp_z_kpc = numpy.abs(fourier_z  [start:end])/n
